@@ -70,7 +70,7 @@ def harmonizationApply(data, covars, model,return_stand_mean=False):
     design[~isTrainSite,0:len(model['SITE_labels'])] = np.nan
     ### additional setup if smoothing is performed
     if smooth_model['perform_smoothing']:
-        if hasattr(smooth_cols, '__iter__'):
+        if not hasattr(smooth_cols, '__iter__'):
             smooth_cols = [smooth_cols]
         # create cubic spline basis for smooth terms
         X_spline = covars[:, smooth_cols].astype(float)
